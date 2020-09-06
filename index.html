@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Lenguaje SQL</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/scripts.js"></script>
+    </head>
+    <body>
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+ 
+        <nav id="navbar">
+          <a href="#" class="boton-cerrar" onclick="ocultar()">&times;</a>
+          <header>Lenguaje SQL</header>
+          <a href="#El_lenguaje_SQL" class="nav-link" onclick="ocultar()">El lenguaje SQL</a>
+          <a href="#Elementos_del_Lenguaje" class="nav-link" onclick="ocultar()">Elementos del Lenguaje</a>
+          <a href="#Operadores_y_expresiones" class="nav-link" onclick="ocultar()">Operadores y expresiones</a>
+          <a href="#Funciones_predefinidas" class="nav-link" onclick="ocultar()">Funciones predefinidas</a>
+          <a href="#Consulta_de_los_datos" class="nav-link" onclick="ocultar()">Consulta de los datos</a>
+          <a href="#Condiciones_de_selección" class="nav-link" onclick="ocultar()">Condiciones de selección</a>
+          <a href="#Agrupamiento_y_funciones_de_Columnas" class="nav-link" onclick="ocultar()">Agrupamiento y funciones de Columnas</a>
+        </nav>
+        <main id="main-doc">
+            <a id="abrir" href="javascript:void(0)" onclick="mostrar()">Abrir menu</a>
+            
+          <section id="El_lenguaje_SQL" class="main-section">
+            <header>
+              El lenguaje SQL
+            </header>
+            <ul>
+              <li>
+                <h3>El lenguaje S.Q.L</h3>
+                <p>S.Q.L. significa lenguaje estructurado de consulta (Structured Query Language). Es un
+                  lenguaje estándar de cuarta generación que se utiliza para definir, gestionar y manipular la
+                  información contenida en una Base de Datos Relacional.
+                </p>
+                <p>Se trata de un lenguaje definido por el estándar ISO/ANSI SQL que utilizan los
+                  principales fabricantes de Sistemas de Gestión de Bases de Datos Relacionales.
+                  En los lenguajes procedimentales de tercera generación se deben especificar todos los
+                  pasos que hay que dar para conseguir el resultado. Sin embargo en SQL tan solo
+                  deberemos indicar al SGDB qué es lo que queremos obtener, y el sistema decidirá cómo
+                  obtenerlo.
+                </p>
+      
+                <p>Es un lenguaje sencillo y potente que se emplea para la gestión de la base de datos a
+                  distintos niveles de utilización: usuarios, programadores y administradores de la base de
+                  datos.</p>
+                <code class="invisible"></code>
+              </li>
+              <li>
+                <h3>¿Qué es una Base de Datos?</h3>
+                <p>Una base de datos está constituida por un conjunto de información relevante para una
+                  empresa o entidad y los procedimientos para almacenar, controlar, gestionar y administrar
+                  esa información.</p>
+                <p>Además, la información contenida en una base de datos cumple una serie de requisitos o
+                  características:
+                  <ul>
+                    <li>Los datos están interrelacionados, sin redundancias innecesarias.</li>
+                    <li>Los datos son independientes de los programas que los usan.</li>
+                    <li>Se emplean métodos determinados para incluir datos nuevos y para borrar, modificar o
+                      recuperar los datos almacenados.</li>
+                  </ul>
+                </p>
+                <code class="invisible"></code>
+              </li>
+              <li>
+                <h3>¿Qué es un Sistema de Gestión de Bases de Datos?</h3>
+                <p>Una base de datos está constituida por un conjunto de información relevante para una
+                  empresa o entidad y los procedimientos para almacenar, controlar, gestionar y administrar
+                  esa información.</p>
+                <p>Además, la información contenida en una base de datos cumple una serie de requisitos o
+                  características:
+                  <ul>
+                    <li>Los datos están interrelacionados, sin redundancias innecesarias.</li>
+                    <li>Los datos son independientes de los programas que los usan.</li>
+                    <li>Se emplean métodos determinados para incluir datos nuevos y para borrar, modificar o
+                      recuperar los datos almacenados.</li>
+                  </ul>
+                </p>
+                <code class="invisible"></code>
+      
+              </li>
+              <li>
+                <h3>Tipos de Bases de Datos.</h3>
+      
+                <p> Existen básicamente tres tipos de bases de datos:
+                  <ul>
+                    <li>Bases de Datos Jerárquicas.</li>
+                    <li>Bases de Datos en Red.</li>
+                    <li>Bases de Datos No Relacionales.</li>
+                    <li>Bases de Datos Relacionales.</li>
+                  </ul>
+                </p>
+                <p>Éstas últimas son, con diferencia, las más difundidas y utilizadas en la actualidad debido a
+                  su potencia, versatilidad y facilidad de utilización. Se basan en el Modelo Relacional cuyas
+                  principales características veremos a continuación. Para gestionarlas se utiliza el lenguaje
+                  SQL.</p>
+                <code class="invisible"></code>
+              </li>
+              <li>
+                <h3>¿ Qué podemos hacer con SQL? </h3>
+                <p>Todos los principales SGBDR incorporan un motor SQL en el Servidor de Base Datos, así
+                  como herramientas de cliente que permiten enviar comandos SQL para que sean
+                  procesadas por el motor del servidor. De esta forma, todas las tareas de gestión de la Base
+                  de Datos (BD) pueden realizarse utilizando sentencias SQL. </p>
+                <p>
+                  <ul>
+                    <li>Consultar datos de la Base de Datos</li>
+                    <li>Insertar, modificar y borrar datos.</li>
+                    <li>Crear, modificar y borrar objetos de la Base de Datos.</li>
+                    <li>Controlar el acceso a la información.</li>
+                    <li>Garantizar la consistencia de los datos.</li>
+                  </ul>
+                </p>
+      
+                <h4>Tipos de sentencias SQL:</h4>
+                <ul>
+                  <li>Recuperar información. (SELECT)</li>
+                  <li>Actualizar la información:</li>
+                  <li>Añadir filas (INSERT)</li>
+                  <li>Eliminar filas (DELETE)</li>
+                  <li>Modificar filas (UPDATE)</li>
+                </ul>
+      
+                <h4>Sentencias de definición de datos.Se utilizan para:</h4>
+                <ul>
+                  <li>Crear objetos de base de datos (CREATE)</li>
+                  <li>Eliminar objetos de base de datos (DROP)</li>
+                  <li>Modificar objetos de base de datos (ALTER)</li>
+                </ul>
+                <code class="invisible"></code>
+              </li>
+            </ul>
+          </section>
+          <section id="Elementos_del_Lenguaje" class="main-section">
+            <header>
+              Elementos del Lenguaje
+            </header>
+            <ul>
+              <li>
+                <h3>Tipos de datos</h3>
+                <p>Las columnas de la base de datos almacenan valores que pueden ser de diversos tipos:
+                  numérico, carácter, fecha, etcétera. A continuación se indican algunos de los tipos más
+                  utilizados.
+                  <ul>
+                    <li><strong>CHAR (longitud)</strong> se utiliza para guardar cadenas de caracteres de longitud fija
+                      especificada entre paréntesis. El espacio no utilizado se rellena con blancos.</li>
+                    <li><strong>VARCHAR (longitud)</strong> almacena cadenas de caracteres de longitud variable
+                      cuyo límite máximo es especifica como longitud.</li>
+                    <li><strong>NUMBER(escala, precisión)</strong> se utiliza para guardar datos numéricos. La escala
+                      indica el número total de dígitos y la precisión el número de posiciones
+                      decimales.</li>
+                    <li><strong>DATE</strong> puede almacenar fechas. En algunos SGDBR también se puede almacena
+                      la hora en este tipo de datos.</li>
+                  </ul>
+                </p>
+                <p>La mayoría de los productos incluyen tipos de datos extendidos e incluso algunos
+                  productos ofrecen la posibilidad de que el usuario defina sus propios tipos. Todos estos
+                  tipos y posibilidades aparecen documentados en las especificaciones del producto, y
+                  escapan del objetivo de este curso</p>
+                <code class="invisible"></code>
+              </li>
+              <li>
+                <h3>Identificadores</h3>
+                <p>Son nombres que sirven para identificar objetos de la base de datos: usuarios, tablas,
+                  columnas. El estándar define que pueden tener hasta 18 caracteres empezando con un
+                  carácter alfabético y continuando con caracteres numéricos y alfabéticos. </p>
+                <p>En la práctica, algunos productos no permiten nombres de usuario de más de ocho
+                  caracteres, pudiendo incluir hasta 30 ó más en los nombres de tablas y columnas.</p>
+                <p>Los ejemplos que aparecen en este curso se corresponden a la notación utilizada por
+                  ORACLE y se ajustan a las especificaciones del estándar ANSI/ISO SQL.</p>
+                <code class="invisible"></code>
+              </li>
+              <li>
+                <h3>Operadores y expresiones</h3>
+                <p>Las sentencias SQL pueden incluir expresiones constituidas por nombres de columnas,
+                  constantes, funciones y operadores.
+                </p>
+                <p>Por ejemplo la siguiente sentencia visualizará el apellido, la fecha de alta, el salario y la
+                  suma del salario con un complemento o gratificación de 100000 Ptas. de todos los
+                  empleados.</p>
+                <code>
+                  SQL> SELECT apellido, fecha_alta, salario, salario + 100000 FROM empleados;
+                  APELLIDO FECHA_AL SALARIO SALARIO+100000
+                  -------- -------- ---------- --------------
+                  REY 17/11/81 600000 700000
+                  GARRIDO 01/05/81 385000 485000
+                  MARTINEZ 09/06/81 245000 345000
+                  ALONSO 20/02/81 140000 240000
+                  LOPEZ 08/05/81 135000 235000
+                  MARTIN 28/09/81 150000 250000
+                  CALVO 08/09/81 180000 280000
+                  GIL 06/05/82 335000 435000
+                  JIMENEZ 24/03/83 140000 240000
+                  9 filas seleccionadas.</code>
+              </li>
+              <li>
+                <h3>Constantes</h3>
+                <p><strong>Constantes numéricas.</strong>
+                  Construidas mediante una cadena de dígitos que puede llevar un punto decimal, y que
+                  pueden ir precedidos por un signo + ó -. (Ej.: -2454.67)
+                  También se pueden expresar constantes numéricas empleado el formato de coma flotante.
+                  (Ej.: 34.345E-8). </p>
+                <p><strong>Constantes de cadena.</strong>
+                  Consisten en una cadena de caracteres encerrada entre comillas simples. (Ej.: 'Hola
+                  Mundo'). </p>
+                <p><strong>Constantes de fecha.</strong>
+                  En realidad las constantes de fecha, en Oracle y otros productos que soportan este tipo, se
+                  escriben como constantes de cadena sobre las cuales se aplicarán las correspondientes
+                  funciones de conversión (ver TO_DATE en el epígrafe de funciones de conversión de este
+                  mismo capítulo) o bien, el gestor de la base de datos realizará una conversión automática
+                  de tipo. (Ej.: '27-SEP-1997').</p>
+                <code class="invisible"></code>
+              </li>
+      
+            </ul>
+          </section>
+          <section id="Operadores_y_expresiones" class="main-section">
+            <header>
+              Operadores y expresiones
+            </header>
+            <ul>
+              <li>
+                <h3>Operadores de concatenación</h3>
+                <p>Para unir dos o más cadenas se utiliza el operador de concatenación ||
+                </p>
+                <code>Ej.: 'buenos' || 'días' daría como resultado 'buenosdias'</code>
+      
+      
+              </li>
+              <li>
+                <h3>Operadores de comparación</h3>
+                <table>
+                  <tr>
+                    <td>Igual</td>
+                    <td>=</td>
+                  </tr>
+                  <tr>
+                    <td>Distinto</td>
+                    <td>!= En Access se utiliza <>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Menor que</td>
+                    <td>
+                      <</td> </tr> <tr>
+                    <td>Mayor que</td>
+                    <td>></td>
+                  </tr>
+                  <tr>
+                    <td>Menor o igual</td>
+                    <td>
+                      <=</td> </tr> <tr>
+                    <td>Mayor o igual</td>
+                    <td>>=</td>
+                  </tr>
+                  <tr>
+                    <td>Otros operadores</td>
+                    <td>IS NULL, BETWEN, LIKE, IN, etcétera</td>
+                  </tr>
+                </table>
+                <p>Las expresiones formadas con operadores de comparación dan como resultado un valor de
+                  tipo verdadero/falso (true/false)</p>
+                <p class="invisible"></p>
+                <code>
+                  SQL> SELECT * FROM EMPLEADOS WHERE OFICIO = 'VENDEDOR';
+                  EMP_NO APELLIDO OFICIO DIRECTOR FECHA_AL SALARIO COMISION DEP_NO
+                  ---------- -------- ---------- ---------- -------- ---------- ---------- ----------
+                  7499 ALONSO VENDEDOR 7698 20/02/81 140000 40000 30
+                  7654 MARTIN VENDEDOR 7698 28/09/81 150000 160000 30
+                  7844 CALVO VENDEDOR 7698 08/09/81 180000 0 30</code>
+              </li>
+              <li>
+                <h3>Operadores logicos: AND, OR y NOT</h3>
+                <p>Ya hemos indicado que los operadores de comparación devuelven un valor lógicos de tipo
+                  verdadero/falso (true/false). En ocasiones se necesita trabajar con varias expresiones de
+                  comparación (por ejemplo cuando queremos formar una condición búsqueda que cumpla
+                  dos condiciones, etcétera) en estos casos debemos recurrir a los operadores lógicos AND,
+                  OR y NOT .</p>
+                <p>Supongamos que queremos consultar los empleados cuyo OFICIO = 'VENDEDOR' y que
+                  además su SALARIO > 150000. En este caso emplearemos el operador lógico <b>AND</b>. Este
+                  operador <b>devolverá el valor true cuando los dos operandos o expresiones son
+                    verdaderas.</b> Simplificando podemos decir que se utiliza cuando queremos que se cumplan
+                  las dos condiciones.</p>
+                <code>
+                  SQL> SELECT * FROM EMPLEADOS WHERE OFICIO = 'VENDEDOR' AND SALARIO > 150000;
+                  EMP_NO APELLIDO OFICIO DIRECTOR FECHA_AL SALARIO COMISION DEP_NO
+                  ---------- -------- ---------- ---------- -------- ---------- ---------- ----------
+                  7844 CALVO VENDEDOR 7698 08/09/81 180000 0 30</code>
+                <p>Cuando lo que queremos es buscar filas que cumplan alguna de las condiciones que se
+                  indican emplearemos el operador <b>OR</b>. Este operador <b>devolverá el valor true cuando
+                    alguno de los dos operandos o expresiones es verdadero (cuando se cumple la primera
+                    condición, o la segunda o ambas).</b></p>
+                <code>
+                  SQL> SELECT * FROM EMPLEADOS WHERE OFICIO = 'VENDEDOR' OR SALARIO > 150000;
+                  EMP_NO APELLIDO OFICIO DIRECTOR FECHA_AL SALARIO COMISION DEP_NO
+                  ---------- -------- ---------- ---------- -------- ---------- ---------- ----------
+                  7839 REY PRESIDENTE 17/11/81 600000 10
+                  7698 GARRIDO DIRECTOR 7839 01/05/81 385000 30
+                  7782 MARTINEZ DIRECTOR 7839 09/06/81 245000 10
+                  7499 ALONSO VENDEDOR 7698 20/02/81 140000 40000 30
+                  7654 MARTIN VENDEDOR 7698 28/09/81 150000 160000 30
+                  7844 CALVO VENDEDOR 7698 08/09/81 180000 0 30
+                  7876 GIL ANALISTA 7782 06/05/82 335000 20</code>
+      
+                <p>
+                  El operador NOT se utiliza para cambiar el valor devuelto por una expresión lógica o de
+                  comparación, tal como se ilustra en el siguiente ejemplo:
+                </p>
+                <code>
+                  SQL> SELECT * FROM EMPLEADOS WHERE NOT OFICIO = 'VENDEDOR';
+                  EMP_NO APELLIDO OFICIO DIRECTOR FECHA_AL SALARIO COMISION DEP_NO
+                  ---------- -------- ---------- ---------- -------- ---------- ---------- ----------
+                  7839 REY PRESIDENTE 17/11/81 600000 10
+                  7698 GARRIDO DIRECTOR 7839 01/05/81 385000 30
+                  7782 MARTINEZ DIRECTOR 7839 09/06/81 245000 10
+                  7521 LOPEZ EMPLEADO 7782 08/05/81 135000 10
+                  7876 GIL ANALISTA 7782 06/05/82 335000 20
+                  7900 JIMENEZ EMPLEADO 7782 24/03/83 140000 20
+                </code>
+              </li>
+      
+            </ul>
+          </section>
+          <section id="Funciones_predefinidas" class="main-section">
+            <header>
+              Funciones predefinidas
+            </header>
+            <ul>
+              <li>
+                <h3>Funciones predefinidas</h3>
+                <p>En SQL disponemos de funciones predefinidas que devuelven un valor en función de un
+                  argumento que se pasa en la llamada. Algunas de estas funciones no se pueden utilizar en
+                  Access o se llaman de otra manera.</p>
+                <table>
+                  <tr>
+      
+                  <tr>
+                    <th>Función</th>
+                    <th>devuelve</th>
+                    <th>Explicación</th>
+                  </tr>
+                  <tr>
+                    <td>ABS( -5)</td>
+                    <td>5</td>
+                    <td>el valor absoluto del número.</td>
+                  </tr>
+                  <tr>
+                    <td>ROUND(8.66, 0)</td>
+                    <td>9</td>
+                    <td>el número redondeando a cero decimales</td>
+                  </tr>
+                  <tr>
+                    <td>TRUC(8.66, 0)</td>
+                    <td>8</td>
+                    <td>truncando los decimales.</td>
+                  </tr>
+                  <tr>
+                    <td>SIGN(8.88)</td>
+                    <td>1</td>
+                    <td>ya que el número es mayor de 0</td>
+                  </tr>
+                  <tr>
+                    <td>INITCAP(‘hola’)</td>
+                    <td>‘Hola’</td>
+                    <td>cadena con el primer carácter en mayúsculas.</td>
+                  </tr>
+                  <tr>
+                    <td>UPPER(‘hola’)</td>
+                    <td>‘HOLA’ </td>
+                    <td>cadena en mayúsculas</td>
+                  </tr>
+                  <tr>
+                    <td>SUBSTR(‘hola’, 2, 2)</td>
+                    <td>‘HOLA’ </td>
+                    <td>cadena en mayúsculas</td>
+                  </tr>
+                  <tr>
+                    <td>UPPER(‘hola’)</td>
+                    <td>‘HOLA’ </td>
+                    <td>cadena en mayúsculas</td>
+                  </tr>
+                  <tr>
+                    <td>SUBSTR(‘hola’, 2, 2)</td>
+                    <td>‘ol’ </td>
+                    <td>subcadena tomando dos posiciones</td>
+                  </tr>
+                  <tr>
+                    <td>SUBSTR(‘hola’, 2, 2)</td>
+                    <td>‘ol’ </td>
+                    <td>subcadena tomando dos posiciones</td>
+                  </tr>
+                  <tr>
+                    <td>SYSDATE</td>
+                    <td>01/02/00</td>
+                    <td>la fecha del sistema</td>
+                  </tr>
+                </table>
+                <p>Cabe subrayar que la función no modifica el valor del argumento sino que devuelve un
+                  valor creado a partir del argumento que se le pasa en la llamada.</p>
+                <code class="invisible"></code>
+              </li>
+              <li>
+                <h3>Funciones numéricas o aritméticas</h3>
+                <p>ABS(num) Valor absoluto de num.<br>
+                  MOD(num1, num2). Resto de la división entera.<br>
+                  POWER(num1, num2).Devuelve num1 elevado a num2. <br>
+                  ROUND(num1, num2) Devuelve num1 redondeado a num2 decimales. <br>
+                  SIGN(num). Si num < 0 devuelve -1, si num=0 devuelve 0, si num> 0 devuelve 1. <br>
+                    SQRT(num).Raíz cuadrada de num <br>
+                    TRUNC(num1, num2).Devuelve num1 truncado a num2 decimales. Si se omite num2, a 0 decimales.</p>
+                <p class="invisible"></p>
+                <code class="invisible"></code>
+              </li>
+              <li>
+                <h3>Funciones de caracteres:</h3>
+                <p>ASCII(c1).
+                  Codigo ASCII del carácter c1.
+                  CHR(num) Carácter correspondiente al código indicado por num
+                  del juego de caracteres utilizado.<br>
+                  CONCAT(c1,c2).
+                  Concatena c1 con c2. Es equivalente al operador ||.
+                  En Access. Pondremos c1&c2 o también c1+c2.<br>
+                  INITCAP(c1).
+                  Devuelve c1 poniendo en mayúscula la primera letra de
+                  cada palabra de la cadena y el resto en minúsculas.
+                  <br>
+                  LENGTH(c1). Longitud de c1.<br>
+                  LOWER(c1). La cadena c1 en minúsculas.<br>
+                  UPPER(c1). La cadena c1 en mayúsculas.<br>
+                  LPAD(c1, n, c2) c1 se visualiza con longitud n y justificado a la derecha. Si
+                  c1 < n, c2 es la cadena con la que se rellena por la izda.<br>
+                    RPAD(c1, n, c2)
+                    Igual que LPAD pero por la derecha.<br>
+                    LTRIM(c1) Suprime blancos a la izquierda de c1.<br>
+                    RTRIM(c1) Suprime blancos a la derecha de c1.<br>
+                    SUBSTR(c1, n, m)
+                    Devuelve una subcadena a partir de c1 comenzando en
+                    la posición n tomando m caracteres.<br>
+                    TRANSLATE(c1, c2, c3)
+                    Devuelve la cadena c1 con cada ocurrencia de c2 que
+                    contenga reemplazada por c3.</p>
+                <p class="invisible"></p>
+                <code class="invisible"></code>
+              </li>
+              <li>
+                <h3>Funciones de fecha</h3>
+                <p>ADD_MONTHS(f, n) Incrementa n meses a la fecha f.. En el caso de
+                  Access podemos sumar años, días o meses a una
+                  fecha dada.<br>
+                  LAST_DAY(f) Último día del mes de la fecha.<br>
+                  MONTHS_BETWEEN (f1, f2) Número de meses entre las dos fechas. El
+                  resultado puede contener decimales
+                  correspondientes a fracciones de mes.
+                  En el caso de Access podemos saber el número de
+                  días, de años y de meses.<br>
+                  SYSDATE. Fecha actual. También la hora si se especifica en el
+                  formato. </p>
+                <p class="invisible"></p>
+                <code class="invisible"></code>
+              </li>
+              <li>
+                <h3>Funciones de conversión</h3>
+                <p>TO_NUMBER(c1). Convierte una cadena a tipo numérico<br>
+                  TO_CHAR(n, formato). Devuelve un número en formato char según especificaciones <br>
+                  TO_CHAR(fecha,formato).Devuelve cadena a partir de una fecha según formato<br>
+                  TO_DATE(fecha, formato).Devuelve fecha a partir de una cadena según las
+                  especificaciones de formato indicadas.
+                </p>
+                <code class="invisible"></code>
+              </li>
+              <li>
+                <h3>Otras funciones</h3>
+                <P>GREATEST(lista de valores). Valor más grande de una lista.<br>
+                  LEAST(lista de valores). Valor más pequeño de una lista<br>
+                  NVL(exp1, exp2). Si exp1 es nulo devuelve exp2. Sino devuelve
+                  exp1.<br>
+                  USER. devuelve el nombre del usuario actual<br>
+                  UID. Devuelve el número de identificación del
+                  usuario actual. Esta función, igual que la
+                  anterior, no tiene argumentos.</P>
+              </li>
+            </ul>
+          </section>
+          <section id="Consulta_de_los_datos" class="main-section">
+            <header>
+              Consulta de los datos
+            </header>
+            <ul>
+              <li>
+                <p>Realizar una consulta en SQL consiste en recuperar u obtener aquellos datos que,
+                  almacenados en filas y columnas de una o varias tablas de una base de datos, cumplen unas
+                  determinadas especificaciones. Para realizar cualquier consulta se utiliza la sentencia
+                  SELECT</p>
+                <p>Las primeras consultas van a ser escritas con un formato inicial de la sentencia
+                  SELECT, que se irá completando en temas siguientes.</p>
+                <code>SELECT ???ALL ???????*?????????????????????????>
+                  ?DISTINCT? ?lista_de_elementos?
+                  >??FROM lista_de_tablas ????????????????????????>
+                  >???????????????????????????????????????????????>
+                  ?WHERE condición_de_selección?
+                  >???????????????????????????????????????????????>;
+                  ?ORDER BY especificaciones_para_ordenar?</code>
+                <code> TABLA DE EMPLEADOS
+                  EMP_NO APELLIDO OFICIO DIRECTOR FECHA_AL SALARIO COMISIÓN DEP_NO
+                  --------- -------- ---------- --------- -------- --------- --------- ---------
+                  7499 ALONSO VENDEDOR 7698 20/02/81 140000 40000 30
+                  7521 LOPEZ EMPLEADO 7782 08/05/81 135000 10
+                  7654 MARTIN VENDEDOR 7698 28/09/81 150000 160000 30
+                  7698 GARRIDO DIRECTOR 7839 01/05/81 385000 30
+                  7782 MARTINEZ DIRECTOR 7839 09/06/81 245000 10
+                  7839 REY PRESIDENTE 17/11/81 600000 10
+                  7844 CALVO VENDEDOR 7698 08/09/81 180000 0 30
+                  7876 GIL ANALISTA 7782 06/05/82 335000 20
+                  7900 JIMENEZ EMPLEADO 7782 24/03/83 140000 20</code>
+                <code>TABLA DE DEPARTAMENTOS
+                  DEP_NO DNOMBRE LOCALIDAD
+                  -------- -------------- ----------
+                  10 CONTABILIDAD BARCELONA
+                  20 INVESTIGACION VALENCIA
+                  30 VENTAS MADRID
+                  40 PRODUCCION SEVILLA</code>
+              </li>
+              <li>
+                <h3>Consultas sencillas.</h3>
+                <p> La consulta más sencilla consiste en recuperar una o varias columnas de una tabla. </p>
+                <code>SELECT ???ALL ???????*?????????????????????????>
+                  ?DISTINCT? ?lista_de_elementos?
+                  >??FROM tabla ??????????????????????????????????>;</code>
+                <p>
+                  <ul>
+                    <li><b>lista_de_elementos</b>: nombres de columnas o expresiones obtenidas a partir de
+                      ellas, y separadas por comas, que son seleccionadas de cada fila para conocer sus
+                      valores.</li>
+                    <li>*: selecciona todas las columnas de la tabla.</li>
+                    <li><b>ALL</b>: obtiene los valores de todos los elementos seleccionados en todas las filas,
+                      aunque sean repetidos. Es la opción por defecto.</li>
+                    <li><b>DISTINCT</b>: obtiene los valores no repetidos de todos los elementos.</li>
+                    <li><b>FROM</b> tabla: indica el nombre de la tabla en la que se realiza la consulta. Si la tabla
+                      no es de la propiedad del usuario, aunque tenga permiso de acceso, deberá usarse
+                      con nombre_propietario.tabla.
+                    </li>
+                  </ul>
+                </p>
+                <code>SELECT * FROM empleados; o SELECT ALL FROM empleados;</code>
+              </li>
+            </ul>
+          </section>
+          <section id="Condiciones_de_selección" class="main-section">
+            <header>
+              Condiciones de selección
+            </header>
+            <ul>
+              <li>
+                <h3>Condiciones de selección.</h3>
+                <p>Para seleccionar las filas de la tabla sobre las que realizar una consulta, la cláusula
+                  WHERE permite incorporar una condición de selección a la sentencia SELECT.
+                </p>
+                <p>Condición_de_selección: expresión formada por columnas de la tabla, constantes,
+                  funciones, operadores de comparación y operadores lógicos, que deberá ser cierta para
+                  que una fila de la tabla sea seleccionada como parte de la salida obtenida por la consulta. </p>
+                <p>
+                  <ul>
+                    <li>
+                      <strong>Operadores de comparación.</strong>
+                      <ul>
+                        <li> aritméticos: =, >, <</li> 
+                        <li> de caracteres: LIKE, máscaras (%, _)</li>
+                        <li>lógicos: IN, BETWEEN</li>
+                      </ul>
+                    </li>
+                    <li><strong>Operadores lógicos-booleanos: AND,OR,NOT .</strong> Permiten construir condiciones de
+                      selección compuestas. El uso de paréntesis ayuda a escribir correctamente, a mejorar la
+                      legibilidad de las condiciones compuestas y a establecer prioridades de evaluación para los
+                      operadores.</li>
+                  </ul>
+                 
+                </p>
+                <code>Ejemplos.
+                  1. Obtener la lista de los empleados vendedores, con su nombre, salario y comisión.
+                  SQL> SELECT apellido,salario,comision
+                  FROM empleados
+                  WHERE UPPER(oficio)=‘VENDEDOR’;
+                 APELLIDO SALARIO COMISION
+                 -------- --------- ---------
+                 ALONSO 140000 40000
+                 MARTIN 150000 160000
+                 CALVO 180000 0
+                  UPPER(expresión_alfabética) obtiene la expresión_alfabética en mayúsculas.</code>
+                  <p>El operador <strong>LIKE</strong>  usado con % indica que la comparación del apellido se realiza sólo en
+                    el primer carácter, que debe ser “M”.El % sustituye al resto de los caracteres.</p>
+                    <p>El operador <strong>BETWEEN</strong>  comprueba si una expresión toma valores dentro del intervalo que le
+                      acompaña</p>
+                      <code>
+                        SQL> SELECT emp_no “Nº Empleado” ,apellido,dep_no Departamento 
+                             FROM empleados 
+                             WHERE (apellido LIKE ‘M%’) 
+                             AND salario BETWEEN 100000 AND 200000;</code>
+              </li>
+              <li>
+                <h3>Ordenación</h3>
+                <p>Para obtener la salida de una consulta clasificada por algún criterio o especificación, la
+                  sentencia SELECT dispone de la cláusula ORDER BY para ordenar.</p>
+                <code> SELECT ???ALL ???????*????????????????????????>
+                  ?DISTINCT? ?lista_de_elementos?
+                  >??FROM lista_de_tablas ????????????????????????>
+                  >???????????????????????????????????????????????>
+                  ?WHERE condición_de_selección?
+                  >???????????????????????????????????????????????>;
+                  ?ORDER BY especificación_para_ordenar?</code>
+                  <p>
+                    Especificación_para_ordenar : lista de columnas o expresiones obtenidas a partir de
+                    ellas, separadas por comas, y cada una de ellas con indicación del tipo de ordenación.
+                  </p>
+                  <p>
+                    Tipo de ordenación: ASC (ascendente) o DESC (descendente). Por omisión es ASC.
+                  </p>
+                  <p>
+                    Los nombres de columnas de la especificación_para_ordenar pueden ser sustituidos
+                    por el número de orden que ocupan en la tabla.
+                  </p>
+                  <p>
+                    Si la especificación_para_ordenar contiene más de una columna o expresión, el orden
+                    en que se realizan las clasificaciones es de izquierda a derecha. 
+                  </p>
+                  <code>2. Obtener clasificación alfabética de empleados por departamentos.
+                    SQL>SELECT * FROM empleados
+                    ORDER BY dep_no, apellido;
+                    o
+                    SQL>SELECT * FROM empleados
+                    ORDER BY 8,2;
+                   EMP_NO APELLIDO OFICIO DIRECTOR FECHA_AL SALARIO COMISION DEP_NO
+                   ------- -------- ---------- --------- -------- --------- --------- ---------
+                    7499 ALONSO VENDEDOR 7698 20/02/81 140000 40000 30
+                    7844 CALVO VENDEDOR 7698 08/09/81 180000 0 30
+                    7698 GARRIDO DIRECTOR 7839 01/05/81 385000 30
+                    7876 GIL ANALISTA 7782 06/05/82 335000 20
+                    7900 JIMENEZ EMPLEADO 7782 24/03/83 140000 20
+                    7521 LOPEZ EMPLEADO 7782 08/05/81 135000 10
+                    7654 MARTIN VENDEDOR 7698 28/09/81 150000 160000 30</code>
+              </li>
+            </ul>
+          </section>
+          <section id="Agrupamiento_y_funciones_de_Columnas" class="main-section">
+            <header>
+              Agrupamiento y funciones de Columnas
+            </header>
+            <ul>
+              <li>
+                <p>SQL permite agrupar las filas de una tabla, seleccionadas en una consulta, y obtener
+                  salidas, calculadas a partir de los grupos formados.</p>
+                <p>El criterio para agrupar suele ser una de las columnas de la tabla. Si no se especifica
+                  ninguno, las filas de la tabla, seleccionadas en la consulta, forman un grupo único.
+                  </p>
+                  <p>Las salidas obtenidas son los resultados de aplicar funciones de columna a los grupos
+                    de filas.</p>
+                    <h4>Funciones de Columnas</h4>
+                    <table>
+                      <tr><th>Funciones</th><th>Descripción</th</tr>
+                         
+                      <tr><td>SUM(expresión/DISTINCT nombre de columna)</td><td>Calcula la suma de valores de la expresión o de la
+                        columna indicada dentro del paréntesis, teniendo
+                        en cuenta que la cláusula DISTINCT omite
+                        valores repetidos.</td></tr>
+                      <tr><td>AVG(expresión/DISTINCT nombre_ de_columna) </td><td>Calcula el valor medio de la expresión que se
+                        indique dentro del paréntesis, teniendo en cuenta que los valores NULL no son incluidos.</td></tr>
+                      <tr><td>MIN(expresión) </td><td>Devuelve el valor mínimo de la expresión que le
+                        acompaña.
+                        </td></tr>
+                      <tr><td>MAX(expresión) </td><td>Devuelve el valor máximo de la expresión que le
+                        acompaña.</td></tr>
+                      <tr><td>COUNT( nombre_ columna/DISTINCT
+                        nombre_de_ columna)</td><td>Cuenta el número de valores de datos que hay en
+                        una columna, sin incluir los valores NULL</td></tr>
+                      <tr><td>COUNT(*) </td><td>Cuenta todas las filas de la tabla, sin considerar
+                        que en algunas columnas existan valores NULL.</td></tr>
+                      <tr><td>STDDEV(expresión)</td><td>Calcula la desviación típica para los valores de la
+                        expresión.</td></tr>
+                      <tr><td>VARIANCE(expresión)</td><td>Calcula la varianza para los valores de la
+                        expresión.</td></tr>
+                    </table>
+                    <p>Los valores NULL no intervienen en las funciones de conjunto o de columna</p>
+                <code>Ejemplos.
+                  1. Obtener la masa salarial mensual de todos los empleados.
+                  SQL>SELECT SUM(salario)
+                  FROM empleados;
+                 SUM(SALARIO)
+                 ------------
+                  2310000
+                  2. Obtener los salarios máximo, mínimo y la diferencia existente entre ambos.
+                  SQL>SELECT MAX(salario),MIN(salario),MAX(salario)-MIN(salario)
+                  FROM empleados;
+                 MAX(SALARIO) MIN(SALARIO) MAX(SALARIO)-MIN(SALARIO)
+                 ------------ ------------ -------------------------
+                  600000 135000 465000
+                  3. Obtener la fecha de alta más reciente.
+                  SQL>SELECT MAX(fecha_alta)”Fecha alta” FROM empleados;
+                 Fecha Al
+                 --------
+                 24/03/83
+                 4. Calcular el salario medio de los empleados.
+                 SQL>SELECT AVG(salario) “Salario medio” FROM empleados;
+                Salario medio
+                -------------
+                 256666,67 </code>
+              </li>
+              <li>
+                <h3>Selección de grupos</h3>
+                <p>Del mismo modo que la cláusula WHERE permite la selección de filas en una sentencia
+                  SELECT, la cláusula HAVING permite realizar una selección sobre los grupos obtenidos por
+                  la cláusula GROUP BY.</p>
+               
+              </li>
+            </ul>
+          </section>
+        </main>
+    </body>
+</html>
